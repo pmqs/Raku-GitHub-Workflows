@@ -6,7 +6,7 @@
     "authors" : [ "Paul Marquess <pmqs@cpan.org>" ],
     "tags" : [ "action"],
     "provides" : {
-        "HelloWorld" : "lib/HelloWorld.rakumod",
+        "HelloWorld" : "lib/HelloWorld.rakumod"
     },
     "test-depends" : [
     ],
