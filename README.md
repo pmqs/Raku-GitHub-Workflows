@@ -1,5 +1,9 @@
 # action-setup-raku
 
+![Linux build](https://github.com/pmqs/action-raku-test/workflows/Linux%20build/badge.svg)
+![Windows build](https://github.com/pmqs/action-raku-test/workflows/Windows%20build/badge.svg)
+![MacOS build](https://github.com/pmqs/action-raku-test/workflows/MacOS%20build/badge.svg)
+
 This distribution contains a number of github actions for testing Raku (Perl6) modules on the following platforms
 
 * Linux
