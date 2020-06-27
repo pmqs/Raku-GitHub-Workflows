@@ -1,0 +1,27 @@
+name: Windows build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Install Rakudostar
+      run: |
+        choco install rakudostar
+        echo "::add-path::C:\rakudo\bin"
+        echo "::add-path::C:\rakudo\share\perl6\site\bin"
+
+    - name: Raku version
+      run: perl6 -v
+
+    - name: Install Module dependencies
+      run: zef install --deps-only .
+
+    - name: Run tests
+      run: zef test --verbose .
