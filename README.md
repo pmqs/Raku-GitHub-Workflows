@@ -1,18 +1,17 @@
-# action-setup-raku
+# Raku Workflows
 
 ![Linux build](https://github.com/pmqs/action-raku-test/workflows/Linux%20build/badge.svg)
 ![Windows build](https://github.com/pmqs/action-raku-test/workflows/Windows%20build/badge.svg)
 ![MacOS build](https://github.com/pmqs/action-raku-test/workflows/MacOS%20build/badge.svg)
 
-This distribution contains a number of github actions for testing Raku (Perl6) modules on the following platforms
+This distribution contains a number of github workflows for testing Raku (Perl6) modules on the following platforms
 
 * Linux
 * Windows
 * MacOS.
 
 
-
-To make use of these actions just copy the complete directory tree `.github` from this distribution.
+To make use of these workflows just copy the complete directory tree `.github` from this distribution.
 You should now have a directory tree that looks like this.
 
 
