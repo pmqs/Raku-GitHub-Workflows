@@ -1,8 +1,10 @@
 # Raku GitHub Workflows
 
-![Linux build](https://github.com/pmqs/action-raku-test/workflows/Linux%20build/badge.svg)
-![Windows build](https://github.com/pmqs/action-raku-test/workflows/Windows%20build/badge.svg)
-![MacOS build](https://github.com/pmqs/action-raku-test/workflows/MacOS%20build/badge.svg)
+![Raku Caching Test](https://github.com/pmqs/Raku-GitHub-Workflows/workflows/Raku%20Caching%20Test/badge.svg)
+![Linux Docker Test](https://github.com/pmqs/Raku-GitHub-Workflows/workflows/Linux%20Docker%20Test/badge.svg)
+![Linux Star Docker Test](https://github.com/pmqs/Raku-GitHub-Workflows/workflows/Linux%20Star%20Docker%20Test/badge.svg)
+![MacOS Star Test](https://github.com/pmqs/Raku-GitHub-Workflows/workflows/MacOS%20Star%20Test/badge.svg)
+![Windows Star Test](https://github.com/pmqs/Raku-GitHub-Workflows/workflows/Windows%20Star%20Test/badge.svg)
 
 This distribution contains a number of  GitHub workflows that can be used for testing [Raku](https://www.raku.org/) (Perl6) modules. The Raku code under `lib` and `t` is just dummy code that acts as a test harness for the worflows. Look in `.github/workflows` for the real deliverables from this dstribution.
 
