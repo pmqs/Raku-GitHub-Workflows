@@ -1,4 +1,4 @@
-name: MacOS build
+name: MacOS Star Test
 
 on: [push, pull_request]
 
@@ -8,7 +8,7 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      
+
     - uses: actions/checkout@v2
 
     - name: Install Raku

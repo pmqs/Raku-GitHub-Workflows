@@ -1,4 +1,4 @@
-name: Raku Test
+name: Raku Caching Test
 
 on: [push, pull_request]
 
