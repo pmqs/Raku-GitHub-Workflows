@@ -1,7 +1,7 @@
 {
     "perl" : "6.*",
     "name" : "HelloWorld",
-    "version" : "0.4.0",
+    "version" : "1.0.0",
     "description" : "Dummy Module",
     "authors" : [ "Paul Marquess <pmqs@cpan.org>" ],
     "tags" : [ "github", "workflow"],
