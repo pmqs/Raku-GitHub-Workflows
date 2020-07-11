@@ -1,10 +1,10 @@
 {
     "perl" : "6.*",
     "name" : "HelloWorld",
-    "version" : "0.3.0",
+    "version" : "0.4.0",
     "description" : "Dummy Module",
     "authors" : [ "Paul Marquess <pmqs@cpan.org>" ],
-    "tags" : [ "action"],
+    "tags" : [ "github", "workflow"],
     "provides" : {
         "HelloWorld" : "lib/HelloWorld.rakumod"
     },
@@ -13,9 +13,9 @@
     "depends" : [
     ],
     "resources" : [ ],
-    "source-url" : "https://github.com/pmqs/action-raku-test.git",
+    "source-url" : "https://github.com/pmqs/Raku-GitHub-Workflows.git",
     "support" : {
-       "source" : "https://github.com/pmqs/action-raku-test.git"
+       "source" : "https://github.com/pmqs/Raku-GitHub-Workflows.git"
     },
     "license" : "Artistic-2.0"
 }
