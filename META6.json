@@ -1,10 +1,10 @@
 {
     "perl" : "6.*",
-    "name" : "HelloWorld",
-    "version" : "1.0.3",
-    "description" : "Dummy Module",
+    "name" : "Raku-GitHub-Workflows",
+    "version" : "1.0.4",
+    "description" : "A collection of Raku GitHub Workflows for Linux, MacOS & Windows",
     "authors" : [ "Paul Marquess <pmqs@cpan.org>" ],
-    "tags" : [ "github", "workflow", "testing"],
+    "tags" : [ "github", "workflow", "testing", "docker" ],
     "provides" : {
         "HelloWorld" : "lib/HelloWorld.rakumod"
     },
