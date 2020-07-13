@@ -1,4 +1,7 @@
 1.0.1 2020-07-13
+    - Fix issue with CPAN distribution
+
+1.0.1 2020-07-13
     - remove half-written sentence
       1774ecb911476dac8cad41ad9d13ba92cf4fb475
 
