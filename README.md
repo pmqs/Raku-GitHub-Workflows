@@ -16,19 +16,19 @@ The workflows vary in the amount of control they have over the version of Raku u
 
 Workflow File | OS Supported | Raku Origin |  Uses [Rakudo Star](https://rakudo.org/star) | Control Raku Version Used | Option To Run Latest Raku | GitHub Cache Support
 ---|---|---|---|---|---|---
-wf-caching.yml | Linux, MacOS & Windows | [Radudo Downloads](https://rakudo.org/downloads/rakudo) | No | Yes | Yes | Yes
+wf-caching.yml | Linux, MacOS & Windows | [Rakudo Downloads](https://rakudo.org/downloads/rakudo) | No | Yes | Yes | Yes
 wf-linux-docker.yml | Linux | [Docker](https://hub.docker.com/r/jjmerelo/alpine-raku) | No | Yes | Yes | No
 wf-linux-star-docker.yml | Linux | [Rakudo Star Official Docker](https://hub.docker.com/_/rakudo-star/) | Yes | Yes | Yes | No
 wf-macos-star.yml |  MacOS | [Homebrew](https://github.com/Homebrew/homebrew-core/blob/master/Formula/rakudo-star.rb) | Yes | No  | No | No
 wf-windows-star.yml | Windows | [Chocolatey](https://chocolatey.org/packages/rakudostar)  | Yes |  No | No | No
 
-## Which should you use?
+## Which one should you use?
 
 For casual testing, one of the workflows that use [Rakudo Star](https://rakudo.org/star) is a good starting point. They usually have a relatively recent build of Raku, plus they come with a set of commonly used modules. Less chance of needing any prerequisite modules to be installed.
 
 ## Why you may need a Caching Workflow
 
-All the workflows use the [zef](https://github.com/ugexe/zef) Module Manager to automatically install Raku depencencies. If you are using a workflow that uses [Rakudo Star](https://rakudo.org/star) there may be no need to install any dependencies. [Rakudo Star](https://rakudo.org/star) may already include them.
+All the workflows use the [zef](https://github.com/ugexe/zef) Module Manager to automatically install Raku depencencies. If you are using a workflow that uses [Rakudo Star](https://rakudo.org/star) there may be no need to install any. [Rakudo Star](https://rakudo.org/star) may already include them.
 
 If you have a use-case where your module dependencies are not present in a [Rakudo Star](https://rakudo.org/star) distribution, and you are not using workflow caching, those dependencies will get resolved by [zef](https://github.com/ugexe/zef) every time the workflow runs.
 
