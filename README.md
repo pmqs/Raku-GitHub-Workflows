@@ -6,7 +6,7 @@
 ![MacOS Star Test](https://github.com/pmqs/Raku-GitHub-Workflows/workflows/MacOS%20Star%20Test/badge.svg)
 ![Windows Star Test](https://github.com/pmqs/Raku-GitHub-Workflows/workflows/Windows%20Star%20Test/badge.svg)
 
-This distribution contains a number of  GitHub workflows that can be used for testing [Raku](https://www.raku.org/) (Perl6) modules. The Raku code under `lib` and `t` is just dummy code that acts as a test harness for the worflows. Look in `.github/workflows` for the real deliverables from this dstribution.
+This distribution contains a number of  GitHub workflows that can be used for testing [Raku](https://www.raku.org/) (Perl6) modules. The Raku code under `lib` and `t` is just dummy code that acts as a test harness for the workflows. Look in `.github/workflows` for the real deliverables from this dstribution.
 
 
 ## Summary of Workflows Available
@@ -34,7 +34,7 @@ If you have a use-case where your module dependencies are not present in a [Raku
 
 At the time of writing, installing Raku module dependencies can take a *long* time to run -- 5 minutes is typical. This is where a caching workflow can help. The `wf-caching.yml` workflow has been setup to use a GitHub cache to store all the modules that [zef](https://github.com/ugexe/zef) installs.
 
-This means that the first time you run the workflow you will take the 5 minute hit, but the subsequent runs should be competed in seconds.
+This means that the first time you run the workflow you will take the 5 minute hit, but the subsequent runs should be completed in seconds.
 
 
 ## Limitations of Caching
