@@ -1,5 +1,6 @@
 1.0.5 2020-07-13
     - Fix typos
+      https://github.com/pmqs/Raku-GitHub-Workflows/pull/2
       2c1d9968f2a928dbc51ed2c93afac73a17793919
 
 1.0.4 2020-07-13
@@ -8,6 +9,7 @@
 
 1.0.3 2020-07-13
     - typos
+      https://github.com/pmqs/Raku-GitHub-Workflows/pull/1
       73a7222b402004f61c0c94f1e6976bbcbc9724d9
 
 1.0.2 2020-07-13
