@@ -41,7 +41,6 @@ This means that the first time you run the workflow you will take the 5 minute h
 
 GitHub will only retain the cache for about a week if it isn't accessed.
 
-Also, if the module you are using gets updated, and you already have an older version in the GitHub cache
 
 ## Support
 
