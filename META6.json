@@ -4,7 +4,7 @@
     "version" : "1.0.2",
     "description" : "Dummy Module",
     "authors" : [ "Paul Marquess <pmqs@cpan.org>" ],
-    "tags" : [ "github", "workflow"],
+    "tags" : [ "github", "workflow", "testing"],
     "provides" : {
         "HelloWorld" : "lib/HelloWorld.rakumod"
     },
