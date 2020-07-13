@@ -1,7 +1,7 @@
 {
     "perl" : "6.*",
     "name" : "Raku-GitHub-Workflows",
-    "version" : "1.0.4",
+    "version" : "1.0.5",
     "description" : "A collection of Raku GitHub Workflows for Linux, MacOS & Windows",
     "authors" : [ "Paul Marquess <pmqs@cpan.org>" ],
     "tags" : [ "github", "workflow", "testing", "docker" ],
