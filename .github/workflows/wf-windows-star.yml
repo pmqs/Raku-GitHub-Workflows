@@ -18,7 +18,7 @@ jobs:
         echo "C:\rakudo\share\perl6\site\bin" >> $GITHUB_PATH
 
     - name: Raku version
-      run: perl6 -v
+      run: raku -v
 
     - name: Install Module dependencies
       run: zef install --deps-only .
