@@ -37,58 +37,53 @@ jobs:
     - name: Check Raku version
       shell: bash
       run: |
-        RakuVersion=$( perl - ${{ matrix.os }} ${{ matrix.raku-release }} <<'EOM'
+        perl - ${{ matrix.os }} ${{ matrix.raku-release }} <<'EOM'
 
             use strict;
             use warnings;
-
+            use feature 'say';
             my %os_mapping = ( macos   => 'macos',
                                ubuntu  => 'linux',
                                windows => 'win'
                              ) ;
-
             my $os = shift ;
             my $version = shift ;
-
             $os =~ s/-.+$//;
 
             die "Unknown OS $os\n"
                 if ! $os_mapping{$os} ;
 
+            my $WINDOWS = $os eq 'windows';
+            my $EOL =  $WINDOWS ? "\r\n" : "\n";
+
             my %available;
             my @available;
             my @data = `curl -s --connect-timeout 5 https://rakudo.org/downloads/rakudo 2>/dev/null` ;
-
             die "Cannot fetch versions: $@\n"
                 if $@;
-
             # get available versions for requested OS
             for my $line (@data)
             {
                 next
                     unless $line =~ m#<a href=./dl/rakudo/rakudo-moar-([\d\.-]+?)-$os_mapping{$os}-x86_64#;
-
                 push @available, $1;
             }
-
             my $max = 0;
-
             map { $max = $max < $_ ? $_ : $max }
             map { scalar split /\D+/, $_ }
             @available ;
-
             for my $v (@available)
             {
                 my @bits = split /\D+/, $v ;
                 push @bits, 0 for @bits .. $max ;
                 my $numeric = join '', map { sprintf "%04d", $_ } @bits ;
-
                 $available{$numeric} = $v;
             }
 
+            my $RakuVersion ;
             if (lc $version eq 'latest')
             {
-                print $available{ (sort keys %available)[-1] } . "\n";
+                $RakuVersion =  $available{ (sort keys %available)[-1] } ;
             }
             else
             {
@@ -96,29 +91,38 @@ jobs:
                           map  { $available{ $_ }     }
                           sort { $b <=> $a            }
                           keys %available ;
-
                 die "Cannot find Raku version $version for $os\n"
                     if ! @got;
-
-                print "$got[0]\n" ;
+                $RakuVersion = $got[0] ;
             }
 
+            warn "Matched with $RakuVersion\n" ;
+
+            append2env("RAKU_VERSION", $RakuVersion) ;
+            append2env("RAKU_INSTALL_PATH_UX", "$ENV{HOME}/raku-$RakuVersion") ;
+
+            if ($os eq 'windows')
+            {
+                append2env("RAKU_INSTALL_PATH",
+                              map { s#^/(.)#$1:#; $_ }
+                              "$ENV{HOME}\\raku-$RakuVersion") ;
+            }
+            else
+            {
+                append2env("RAKU_INSTALL_PATH", "$ENV{HOME}/raku-$RakuVersion") ;
+            }
+
+
+            sub append2env
+            {
+                my $name = shift ;
+                my $value = shift;
+                open F, '>>', $ENV{GITHUB_ENV}
+                  or die "Cannot open $ENV{GITHUB_ENV}: $!\n" ;
+                print F  $name . '=' . $value . $EOL;
+                close F ;
+              }
         EOM
-        )
-        echo Matched with $RakuVersion
-        echo "RAKU_VERSION::$RakuVersion" >> $GITHUB_ENV
-
-
-    - name: Set Raku install Path in Unix format
-      shell: bash
-      run: |
-        echo "RAKU_INSTALL_PATH=$HOME/raku-${{ env.RAKU_VERSION }}" >> $GITHUB_ENV
-        echo "RAKU_INSTALL_PATH_UX=$HOME/raku-${{ env.RAKU_VERSION }}" >> $GITHUB_ENV
-
-    - name: Set Raku install Path in Windows format
-      if: ${{ startsWith(matrix.os, 'windows') }}
-      run: |
-        echo "RAKU_INSTALL_PATH=$HOME\raku-${{ env.RAKU_VERSION }}" >> $GITHUB_ENV
 
     - name: Check for cached install of Raku ${{ env.RAKU_VERSION }}
       id: my-cache
@@ -136,14 +140,14 @@ jobs:
 
         if [[ "${{ matrix.os }}" = windows* ]]
         then
-            curl -s https://rakudo.org/dl/rakudo/rakudo-moar-${{ env.RAKU_VERSION }}-win-x86_64.zip >tmp.zip
+            curl -s https://rakudo.org/dl/rakudo/rakudo-moar-${{ env.RAKU_VERSION }}-win-x86_64-msvc.zip >tmp.zip
             unzip tmp.zip
             rm tmp.zip
         elif  [[ "${{ matrix.os }}" = ubuntu* ]]
         then
-            curl -s https://rakudo.org/dl/rakudo/rakudo-moar-${{ env.RAKU_VERSION}}-linux-x86_64.tar.gz | tar xzf - -C ${{ env.RAKU_INSTALL_PATH_UX }}
+            curl -s https://rakudo.org/dl/rakudo/rakudo-moar-${{ env.RAKU_VERSION}}-linux-x86_64-gcc.tar.gz | tar xzf - -C ${{ env.RAKU_INSTALL_PATH_UX }}
         else
-            curl -s https://rakudo.org/dl/rakudo/rakudo-moar-${{ env.RAKU_VERSION }}-macos-x86_64.tar.gz | tar xzf - -C ${{ env.RAKU_INSTALL_PATH_UX }}
+            curl -s https://rakudo.org/dl/rakudo/rakudo-moar-${{ env.RAKU_VERSION }}-macos-x86_64-clang.tar.gz | tar xzf - -C ${{ env.RAKU_INSTALL_PATH_UX }}
         fi
 
     - name: Get path data for Raku ${{ env.RAKU_VERSION }}
