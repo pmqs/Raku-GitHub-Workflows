@@ -14,8 +14,8 @@ jobs:
     - name: Install Rakudostar
       run: |
         choco install rakudostar
-        echo "::add-path::C:\rakudo\bin"
-        echo "::add-path::C:\rakudo\share\perl6\site\bin"
+        echo "C:\rakudo\bin" >> $GITHUB_PATH
+        echo "C:\rakudo\share\perl6\site\bin" >> $GITHUB_PATH
 
     - name: Raku version
       run: perl6 -v

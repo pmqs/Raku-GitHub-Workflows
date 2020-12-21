@@ -106,19 +106,19 @@ jobs:
         EOM
         )
         echo Matched with $RakuVersion
-        echo "::set-env name=RAKU_VERSION::$RakuVersion"
+        echo "RAKU_VERSION::$RakuVersion" >> $GITHUB_ENV
 
 
     - name: Set Raku install Path in Unix format
       shell: bash
       run: |
-        echo "::set-env name=RAKU_INSTALL_PATH::$HOME/raku-${{ env.RAKU_VERSION }}"
-        echo "::set-env name=RAKU_INSTALL_PATH_UX::$HOME/raku-${{ env.RAKU_VERSION }}"
+        echo "RAKU_INSTALL_PATH=$HOME/raku-${{ env.RAKU_VERSION }}" >> $GITHUB_ENV
+        echo "RAKU_INSTALL_PATH_UX=$HOME/raku-${{ env.RAKU_VERSION }}" >> $GITHUB_ENV
 
     - name: Set Raku install Path in Windows format
       if: ${{ startsWith(matrix.os, 'windows') }}
       run: |
-        echo "::set-env name=RAKU_INSTALL_PATH::$HOME\raku-${{ env.RAKU_VERSION }}"
+        echo "RAKU_INSTALL_PATH=$HOME\raku-${{ env.RAKU_VERSION }}" >> $GITHUB_ENV
 
     - name: Check for cached install of Raku ${{ env.RAKU_VERSION }}
       id: my-cache
@@ -151,13 +151,13 @@ jobs:
       run: |
         cd ${{ env.RAKU_INSTALL_PATH_UX }}
         BASE_RELEASE=$( ls )
-        echo "::set-env name=RAKU_BASE_PATH::${{ env.RAKU_INSTALL_PATH }}/$BASE_RELEASE"
+        echo "RAKU_BASE_PATH=${{ env.RAKU_INSTALL_PATH }}/$BASE_RELEASE" >> $GITHUB_ENV
 
     - name: Set Path for Raku ${{ env.RAKU_VERSION }}
       shell: bash
       run: |
-        echo "::add-path::$RAKU_BASE_PATH/bin"
-        echo "::add-path::$RAKU_BASE_PATH/share/perl6/site/bin"
+        echo "$RAKU_BASE_PATH/bin" >> $GITHUB_PATH
+        echo "$RAKU_BASE_PATH/share/perl6/site/bin" >> $GITHUB_PATH
 
     - name: Raku ${{ env.RAKU_VERSION }} version
       run: raku -v
